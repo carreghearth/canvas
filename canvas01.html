@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pl">
+   <head>
+        <meta charset="utf-8">
+        <title>Kolorowe kwadraty</title>
+   <style>
+    body {
+         background-color: black;
+         }
+    table {
+          border: solid;
+          }
+   .board {
+           border-spacing:0px;
+          }
+   td {
+      border: 1px solid grey;
+      width: 20px;
+      height: 20px;
+      }
+   .paleta {
+            position: absolute;
+            top: 450px;
+            left: 130px;     
+            border: solid grey;
+            width: 120px;
+            height: 120px;
+            background-color: red;
+           }
+   </style>
+   </head>
+
+<body>
+<table  class='board'>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
+<div id="przyciskKoloru" class="paleta" onclick="zmienKolorPedzla()">
+</div>
+   <script>
+   var rysunek =[];
+   var kolorPedzla = 0;
+   var koloryNaPalecie = ["red", "blue", "yellow", "white", "black", "green", "orange", "brown", "violet"];
+   function zmienKolorPedzla() {
+       kolorPedzla = (kolorPedzla +1) % 9;
+       console.log(kolorPedzla);
+       var x = document.getElementById("przyciskKoloru");
+         
+         x.style.backgroundColor = koloryNaPalecie[kolorPedzla];   
+
+    }//koniec funkcji zmienKolorPedzla
+   function init(){
+          var komorki = document.getElementsByTagName("td");
+          for (var i = 0; i < komorki.length; i++){komorki[i].id = "a" + i;}
+          for (var i = 0; i < komorki.length; i++){komorki[i].onclick = zmienKolorKomorki;}
+          for (var i = 0; i < komorki.length; i++){document.getElementById(komorki[i].id).style.backgroundColor = "orange";}
+          var x = document.getElementById("przyciskKoloru");
+         
+         x.style.backgroundColor = koloryNaPalecie[kolorPedzla];   
+
+          }//koniec funkcji init
+   function zmienKolorKomorki(eventObj) {
+     var komorka = eventObj.target;
+     document.getElementById(komorka.id).style.backgroundColor = koloryNaPalecie[kolorPedzla]; 
+    //  var komorki = document.getElementsByTagName("td");
+    // for (var i = 0; i < komorki.length; i++){rysunek.push(document.getElementById(komorki[i].id).style.backgroundColor);} 
+    // console.log(rysunek); 
+     }//Koniec funkcji zmienKolorKomorki
+    init();
+   </script>
+</body>
+</html>
